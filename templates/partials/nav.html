@@ -1,0 +1,13 @@
+<header>
+  <h3><a href="{% url "core:home" %}"> &copy; Airbnb Clone Coding </a></h3>
+  {% if user.is_authenticated %}
+  <ul>
+      <a href="{% url "users:logout" %}"> Logout </a>
+  {% else %}
+      <li><a href="{% url "users:login" %}"> Login </a></li>
+      <li><a href="{% url "users:signup" %}"> Sign Up </a></li>
+  </ul>
+  {% endif %}
+</header>
+
+

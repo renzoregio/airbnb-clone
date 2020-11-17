@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %} Search {% endblock title %}
+{% block search-bar %}
+    <h2> Search </h2>
+    <form action="{% url "rooms:search" %}" method="GET">
+        {{form.as_p}}
+        <button> Search </button>
+    </form>
+    {% if pages != none %}
+        <h3> Results: </h3> 
+            {% for room in pages %}
+                <h4> {{room.name}} </h4>
+            {% endfor %}
+                {{pages.number}} of {{pages.paginator.num_pages}}
+    {% endif %}
+{% endblock search-bar %}
+{% block content %}
+{% endblock content %}
+
+

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %} {{room.name}} {% endblock title %}
+{% block content %}
+<div>
+    <h1> {{room.name}} / ${{room.price}} </h1>
+    <h2> {{room.description}} </h2>
+</div>
+<div>
+    <h2> By: {{room.host.username}}
+    {% if room.host.superhost %}
+    (superhost)
+    {% endif %}</h2>
+    <h3> List of Amenities </h3>
+    {% for amenity in room.amenities.all %}
+     <ul> 
+        <li> {{amenity}}</li>
+    </ul>
+    {% endfor %}
+    <h3> List of Facilities </h3>
+    {% for facility in room.facilities.all %}
+    <ul>
+        <li> {{facility}}</li>
+    </ul>
+    {% endfor %}
+    <h3> House Rules </h3>
+    {% for rule in room.house_rules.all %}
+    <ul>
+        <li> {{rule}} </li>
+    </ul>
+    {% endfor %}
+{% endblock content %}
+
