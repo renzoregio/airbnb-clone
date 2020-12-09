@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Update Room{% endblock title %}
+{% block content %}
+<div class="container flex items-center mx-auto justify-center">
+    <form class="p-5 my-10 xl:1/4 lg:w-5/12 md:w-1/2 border border-gray-400 flex flex-col items-center" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+           {% for field in form %}
+           <span class="flex justify-start w-full">{{field.label}}</span>
+           <div class="w-full border border-gray-600 p-5 rounded-md block text-left text-xl font-light mb-10">
+               {{field}}
+           </div>
+           {% endfor %}
+        <button class="w-full border py-5 rounded-md block text-center text-xl font-light mt-5 mb-2 bg-red-500 text-white"> Update Room </button>
+        <a href="{% url "rooms:edit-photos" room.pk %}" class="login_box bg-teal-500 text-white flex justify-center">Edit Room Photos</a>
+    </form>
+</div>
+{% endblock content %}
+
+

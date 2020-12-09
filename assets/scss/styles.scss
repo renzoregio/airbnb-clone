@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+
+.nav_link {
+  @apply ml-8 border-b-2 border-white h-full flex items-center;
+  a {
+    @apply py-8 px-5;
+  }
+  &:hover {
+    @apply border-teal-600;
+  }
+}
+
+input {
+  @apply outline-none w-full h-full;
+}
+
+.login_box {
+  @apply w-full border border-gray-600 p-5 rounded-md block text-left text-xl font-light mt-5;
+  &.has_error {
+    @apply border-red-700;
+  }
+}
+
+.link_btn {
+  @apply w-full p-5 rounded-md block text-center text-xl font-light text-white bg-red-500 mt-5;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-gap: 10px;
+}
+
+@keyframes messageFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  25% {
+    opacity: 1;
+    transform: translateY(50px);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(20px);
+  }
+  75% {
+    opacity: 1;
+    transform: translateY(45px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+}
+
+.message {
+  animation: messageFadeIn 3s ease-in-out forwards;
+  &.error {
+    @apply bg-red-600;
+  }
+  &.info {
+    @apply bg-blue-500;
+  }
+  &.success {
+    @apply bg-green-500;
+  }
+  &.warning {
+    @apply bg-yellow-500;
+  }
+}
+
+form {
+  select {
+    @apply w-full h-full outline-none cursor-pointer;
+  }
+}
+
+textarea {
+  resize: none;
+  height: 100px;
+  outline: none;
+}
+
+button {
+  outline: none;
+}
+
+@tailwind utilities;

@@ -1,0 +1,10 @@
+{% load i18n %}
+<div class="flex flex-col items-center w-full">
+    <a class=" w-full border py-5 rounded-md block text-center text-xl font-light mb-5 border-gray-600 border-2 text-gray-700 login-btn" href="{% url "users:github-login" %}"><i class="fab fa-github mr-6 fa-lg"></i>{% trans "Continue with" %} Github</a>
+    <a class=" w-full border py-5 rounded-md block text-center text-xl font-light mb-5 border-yellow-400 text-yellow-800 bg-yellow-400" href="{% url "users:kakao-login" %}"><i class="fas fa-comment mr-4 fa-lg"></i>{% trans "Continue with" %}KakaoTalk</a>
+</div>
+<div class="flex w-full items-center my-5">
+            <div class="w-full h-px bg-gray-400"></div>
+            <span class="text-gray-600 text-sm font-medium mx-4">Or</span>
+            <div class="w-full h-px bg-gray-400"></div>
+        </div>

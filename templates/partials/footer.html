@@ -1,0 +1,12 @@
+{% load i18n %}
+<footer class="justify-center flex border-t font-medium text-gray-600 py-10 flex-col items-center">
+    &copy; 2020 Clonebnb, Inc. {% trans "All rights reserved"%}
+    <div>
+        {% get_current_language as LANGUAGE_CODE %}
+        {{LANGUAGE_CODE}}
+        <select id="js-lang">
+            <option value="en" {% if LANGUAGE_CODE == 'en' %} selected {% endif %}>English</option>
+            <option value="es"{% if LANGUAGE_CODE == 'es' %} selected {% endif %}> Spanish </option>
+        </select>
+    </div>
+</footer>

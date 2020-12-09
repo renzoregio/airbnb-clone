@@ -1,0 +1,9 @@
+<div class="rounded-full my-5 bg-gray-500 h-64 w-64 flex justify-center items-center">
+    {% if logged_in_user.avatar %}
+    <img class="h-64 w-64 rounded-full" src="{{logged_in_user.avatar.url}}"/>
+    {% else %}
+    <span class=" text-white text-6xl font-extrabold">{{logged_in_user.first_name|first}}</span>
+    {% endif %}
+</div>
+
+

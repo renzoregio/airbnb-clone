@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container border flex justify-center mx-auto h-auto w-full mb-20">
+    <form class="w-full h-auto" method="POST">
+        <div class="w-full container mx-auto justify-center mt-20 h-25vh flex flex-wrap">
+        {% for photo in room.photos.all %}
+        <div class="m-2">
+            <div class="h-56 w-56 bg-cover bg-center rounded-lg" style="background-image:url({{photo.file.url}})"></div>
+        </div>
+        {% endfor %}
+        <div>
+            <span class="text-2xl font-medium block mt-2">{{room.name}}</span>
+            <div class="text-xl flex justify-center items-center mt-5">
+                <i class="text-red-500 fas fa-star text-xl mr-2"></i>
+                {{room.total_rating}}
+                <div class="text-xl ml-3">({{room.reviews.count}})</div>
+            </div>
+        </div>
+        <a href="{% url "rooms:delete-confirmation" room.pk %}" class="login_box w-3/4 bg-red-600 mt-20 flex justify-center text-2xl text-white">
+            Are you sure you want to delete this <span class=" mx-1 font-extrabold"> Room</span>
+            ?
+        </a>
+    </div>
+    </form>
+</div>
+
+{% endblock content %}
+

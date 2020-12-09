@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block title %} Conversations {% endblock title %}
+{% block content %}
+<div class="w-full flex justify-evenly my-20">
+    <div class=" w-1/4 items-center justify-center border flex flex-col p-10">
+        <span class="text-2xl font-semibold mb-10">Conversation between:</span>
+        <div class="flex justify-evenly w-full">
+            <div class="flex flex-col items-center">
+                <div class="rounded-full my-3 bg-gray-700 h-40 w-40 flex justify-center items-center">
+                    <span class=" text-white text-5xl font-extrabold">{{user.first_name|first}}</span>
+                </div>
+                <span class="text-2xl text-gray-500">{{user.first_name}}</span>
+            </div>
+            <div class="flex items-center font-medium text-4xl">&</div>
+            <div class="flex flex-col items-center">
+                <div class="rounded-full my-3 bg-gray-700 h-40 w-40 flex justify-center items-center">
+                    <span class=" text-white text-5xl font-extrabold">{{guest.first_name|first}}</span>
+                </div>
+                <span class="text-2xl text-gray-500">{{guest.first_name}}</span>
+            </div>
+        </div>
+    </div>
+    <div class=" w-1/3 border mr-20">
+        <div class=" p-10 w-full h-full flex flex-col">
+        {% if conversation.messages.count == 0 %}
+        <div class="text-2xl flex justify-center items-center h-full"> No messages </div>
+        {% else %}
+        {% for message in conversation.messages.all %}
+        <div class=" mt-10 {% if guest.pk == message.user.pk %} flex justify-end flex-col items-end {% endif %}">
+            <span class="font-semibold text-gray-600">{{message.user.first_name}}</span>
+        <div class="w-48 h-16 flex items-center px-5 font-medium text-xl  mt-2{% if guest.pk == message.user.pk %} bg-gray-400 justify-end rounded-tl-2xl rounded-bl-2xl 
+        rounded-br-2xl {% else %} rounded-tr-2xl rounded-br-2xl rounded-bl-2xl bg-teal-400 text-white{% endif %}">{{message.message}}</div>
+        <div class="mt-px px-2 text-gray-400">
+            <span>{{message.created.hour}}</span>
+            <span>:</span>
+            <span>{{message.created.minute}}</span>
+        </div>
+        </div>
+        {% endfor %}
+        {% endif %}
+        <form action="{% url "conversations:send" conversation.pk guest.pk user.pk%}" method="POST">
+            {% csrf_token %}
+            <div class="login_box flex">
+                <input name="message" required placeholder="Write your message here">
+                <button class="w-32 h-20 rounded-full bg-red-400 text-white font-medium">Send</button>
+            </div>
+       </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+
+

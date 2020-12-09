@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Edit Profile{% endblock title %}
+{% block content %}
+<div class="container flex items-center mx-auto justify-center">
+    <form class="p-5 my-10 xl:1/4 lg:w-5/12 md:w-1/2 border border-gray-400 flex flex-col items-center" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+           {% for field in form %}
+           <div class="login_box w-full">
+               {{field}}
+           </div>
+           {% endfor %}
+        <button class="w-full border py-5 rounded-md block text-center text-xl font-light mt-5 mb-2 bg-red-500 text-white"> Edit Profile </button>
+        {% if user.login_method == "email" %}
+        <div class="mt-6 flex justify-center w-full mb-8 text-lg">
+            <a class="rounded-md text-teal-500" href="{% url "users:change-password" %}">Change Password</a>
+        </div>
+        {% endif %}
+    </form>
+</div>
+{% endblock content %}
+
+
+
+
+
+
+

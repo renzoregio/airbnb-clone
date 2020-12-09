@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Update Photo{% endblock title %}
+{% block content %}
+
+<form method="POST">
+{% csrf_token %}
+<div class="container h-full w-full mx-auto flex justify-center border p-5 my-10 rounded-xl">
+    <div class="w-1/2">
+        <div class="h-25vh w-25vh bg-cover bg-center m-4 rounded-lg" style="background-image:url({{photo.file.url}})"></div>
+    </div>
+    <div class="w-1/2 flex items-center flex-col justify-center">
+        {% for field in form %}
+        <span class="text-4xl">Edit Caption</span>
+        <div class="login_box">{{field}}</div>
+    {% endfor %}
+    <button class="login_box flex justify-center bg-teal-500 text-white text-3xl">Update Photo</button>
+    </div>
+</div>
+
+</form>
+
+{% endblock content %}
+
+

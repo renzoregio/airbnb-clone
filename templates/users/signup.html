@@ -1,11 +1,25 @@
 {% extends "base.html" %}
 {% block title %}Sign Up{% endblock title %}
 {% block content %}
-<form method="POST" action="{% url "users:signup" %}">
-    {% csrf_token %}
-    {{form.as_p}}
-    <button> Sign Up </button>
-</form>
+<div class="container mx-auto flex justify-center">
+    <form class="p-5 my-10 xl:1/4 lg:w-5/12 md:w-1/2 border border-gray-400 flex flex-col items-center"method="POST" action="{% url "users:signup" %}">
+        {% csrf_token %}
+        {% include "partials/social_login.html" %}
+        {% for field in form %}
+        <div class="login_box {% if field.errors %} has_error {% endif %}">
+            {{field}}
+        </div>
+        {% if field.errors %}
+            <span class="text-red-700 flex justify-start w-full font-semibold text-sm">{{field.errors}}</span>
+        {% endif %}
+        {% endfor %}
+        <button class="border border-teal-500 rounded-md py-1 px-3 text-teal-500 mt-5"> Sign Up </button>
+        <div class="mt-6 mb-10 text-lg">
+            <span class=" mr-4 text-gray-600">Do you have an account?</span>
+            <a class="border-b-2 border-teal-500 text-teal-500" href="{% url "users:login" %}">Log in</a>
+        </div>
+    </form>
+</div>
 {% endblock content %}
 
 

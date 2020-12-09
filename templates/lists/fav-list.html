@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %} {{user.first_name}}'s Favorites {% endblock title  %}
+{% block content %}
+{% for list in user.lists.all %}
+<div class="container h-full flex flex-col items-center justify-center mx-auto">
+    <div class="flex justify-center flex-col items-center">
+        <div class="w-full text-5xl font-semibold flex justify-center mb-10 {% if lists.count == 0 %}items-center min-h-screen {% endif %}">{% if lists.count != 0 %} {{list}} {% else %} You have no favorite houses. {% endif %}</div>
+        <div class="flex items-center flex-wrap">
+            {% for room in list.rooms.all %}
+                {% include "mixins/profile_room_cards.html" with room=room %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+{% endblock content %}
+
+
+

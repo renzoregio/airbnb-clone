@@ -1,13 +1,25 @@
-<header>
-  <h3><a href="{% url "core:home" %}"> &copy; Airbnb Clone Coding </a></h3>
+ {% load i18n %}
+ <ul class="flex items-center text-sm font-medium h-full">
   {% if user.is_authenticated %}
-  <ul>
-      <a href="{% url "users:logout" %}"> Logout </a>
+  <li class="nav_link"><a href="{% url "users:switch-hosting" %}"> 
+    {% if request.session.is_hosting %}
+    {% trans "Stop Hosting" %}
+    {% else %}
+    {% trans "Start Hosting" %}
+    {% endif %}     
+    </a></li>
+    {% if request.session.is_hosting %}
+    <li class="nav_link"><a href="{% url "rooms:create" %}"> {% trans "Create Room" %} </a></li>
+    {% endif %}
+    <li class="nav_link"><a href="{% url "reservations:reservations-list" user.pk %}">{% if not request.session.is_hosting %} My Reservations {% else %} Hosted Rooms {% endif %}</a></li>
+      <li class="nav_link"><a href="{% url "lists:favorite-list" user.username %}"> {% trans "Favorites" %} </a></li>
+      <li class="nav_link"><a href="{{user.get_absolute_url}}"> {% trans "Profile" %} </a></li>
+      <li class="nav_link"><a href="{% url "users:logout" %}"> {% trans "Logout" %} </a></li>
   {% else %}
-      <li><a href="{% url "users:login" %}"> Login </a></li>
-      <li><a href="{% url "users:signup" %}"> Sign Up </a></li>
+      <li class="nav_link"><a href="{% url "users:login" %}"> {% trans "Log In" %} </a></li>
+      <li class="nav_link"><a href="{% url "users:signup" %}"> {% trans "Sign Up" %} </a></li>
   </ul>
   {% endif %}
-</header>
+
 
 

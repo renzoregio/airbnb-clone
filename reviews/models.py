@@ -1,4 +1,4 @@
-from django.core.validators import MaxValueValidator
+from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from core import models as core_models
 
@@ -8,12 +8,24 @@ class Review(core_models.TimeStampedModel):
     """ Review Model Definition """
 
     review = models.TextField()
-    accuracy = models.IntegerField(validators=[MaxValueValidator(5)], default=5)
-    communication = models.IntegerField(validators=[MaxValueValidator(5)], default=5)
-    cleanliness = models.IntegerField(validators=[MaxValueValidator(5)], default=5)
-    location = models.IntegerField(validators=[MaxValueValidator(5)], default=5)
-    check_in = models.IntegerField(validators=[MaxValueValidator(5)], default=5)
-    value = models.IntegerField(validators=[MaxValueValidator(5)], default=5)
+    accuracy = models.IntegerField(
+        validators=[MaxValueValidator(5), MinValueValidator(1)],
+    )
+    communication = models.IntegerField(
+        validators=[MaxValueValidator(5), MinValueValidator(1)],
+    )
+    cleanliness = models.IntegerField(
+        validators=[MaxValueValidator(5), MinValueValidator(1)],
+    )
+    location = models.IntegerField(
+        validators=[MaxValueValidator(5), MinValueValidator(1)],
+    )
+    check_in = models.IntegerField(
+        validators=[MaxValueValidator(5), MinValueValidator(1)],
+    )
+    value = models.IntegerField(
+        validators=[MaxValueValidator(5), MinValueValidator(1)],
+    )
     user = models.ForeignKey(
         "users.User", related_name="reviews", on_delete=models.CASCADE
     )
@@ -36,3 +48,6 @@ class Review(core_models.TimeStampedModel):
         return round(avg, 2)
 
     rating_average.short_description = "Average"
+
+    class Meta:
+        ordering = ("-created",)

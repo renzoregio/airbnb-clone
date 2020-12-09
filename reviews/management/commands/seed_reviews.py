@@ -26,12 +26,12 @@ class Command(BaseCommand):
             {
                 "user": lambda x: random.choice(user),
                 "room": lambda x: random.choice(room),
-                "accuracy": lambda x: random.randint(0, 5),
-                "communication": lambda x: random.randint(0, 5),
-                "cleanliness": lambda x: random.randint(0, 5),
-                "location": lambda x: random.randint(0, 5),
-                "check_in": lambda x: random.randint(0, 5),
-                "value": lambda x: random.randint(0, 5),
+                "accuracy": lambda x: random.randint(1, 10),
+                "communication": lambda x: random.randint(1, 10),
+                "cleanliness": lambda x: random.randint(1, 10),
+                "location": lambda x: random.randint(1, 10),
+                "check_in": lambda x: random.randint(1, 10),
+                "value": lambda x: random.randint(1, 10),
             },
         )
         seeder.execute()

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}{{room.name}}'s Photos{% endblock title %}
+{% block content %}
+
+<div class="container mx-auto w-25vh py-5">
+    <a href="{% url "rooms:add-photo" room.pk %}" class="login_box bg-teal-500 text-white flex justify-center text-4xl">Add Photo</a>
+</div>
+{% for photo in room.photos.all %}
+<div class="container h-full w-full mx-auto flex justify-center border p-5 my-10 rounded-xl">
+    <div class="w-1/2">
+        <div class="h-25vh w-25vh bg-cover bg-center m-4 rounded-lg" style="background-image:url({{photo.file.url}})"></div>
+    </div>
+    <div class="w-1/2 flex items-center flex-col justify-center mr-20">
+        <span class="flex items-center text-xl font-semibold">{{photo.caption}}</span>
+        <a href="{% url "rooms:edit-photo" room.pk photo.pk %}" class="login_box bg-teal-500 text-white block text-center">Edit</a>
+        <a href="{% url "rooms:delete-photo" room.pk photo.pk %}" class="login_box bg-red-500 text-white block text-center">Delete</a>
+    </div>
+</div>
+{% endfor %}
+<div class="container mx-auto w-25vh">
+    <a href="{% url "rooms:detail" room.pk %}" class="login_box my-20 flex justify-center text-4xl bg-teal-500 text-white hover:bg-red-500">Go back to Room</a>
+</div>
+{% endblock content %}
+
+

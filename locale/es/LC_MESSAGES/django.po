@@ -1,0 +1,110 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-11-30 21:46+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: templates/base.html:22
+msgid "Search by City"
+msgstr "Buscar por ciudad"
+
+#: templates/mixins/profile_room_cards.html:15
+#: templates/partials/room_cards.html:16
+msgid "No Rating"
+msgstr ""
+
+#: templates/partials/footer.html:3
+msgid "All rights reserved"
+msgstr "Todos los derechos reservados"
+
+#: templates/partials/nav.html:6
+msgid "Stop Hosting"
+msgstr ""
+
+#: templates/partials/nav.html:8
+msgid "Start Hosting"
+msgstr ""
+
+#: templates/partials/nav.html:12
+msgid "Create Room"
+msgstr "Crear habitación"
+
+#: templates/partials/nav.html:14
+msgid "Profile"
+msgstr "Perfil"
+
+#: templates/partials/nav.html:15
+msgid "Logout"
+msgstr "Cerrar sesión"
+
+#: templates/partials/nav.html:17
+msgid "Log In"
+msgstr "Iniciar sesión"
+
+#: templates/partials/nav.html:18
+msgid "Sign Up"
+msgstr "Regístrate"
+
+#: templates/partials/social_login.html:3
+#: templates/partials/social_login.html:4
+msgid "Continue with"
+msgstr ""
+
+#: templates/reservations/reservation-detail.html:32
+msgid "Contact Your Airbnb Host"
+msgstr ""
+
+#: templates/reservations/reservation-detail.html:33
+msgid ""
+"Your host is the best person to contact for questions about your reservation."
+msgstr ""
+
+#: templates/reservations/reservation-detail.html:36
+msgid "Send a Message"
+msgstr ""
+
+#: templates/reservations/reservation-detail.html:38
+msgid "Cancel Reservation"
+msgstr ""
+
+#: templates/reservations/reservation-detail.html:40
+msgid "Confirm Reservation"
+msgstr ""
+
+#: templates/reservations/reservation-detail.html:48
+msgid "Thank you for staying with"
+msgstr ""
+
+#: templates/reservations/reservation-detail.html:48
+msgid "Would you like to leave a review?"
+msgstr ""
+
+#: templates/reservations/reservation-detail.html:59
+msgid "Submit Review"
+msgstr ""
+
+#: templates/rooms/room_list.html:3
+msgid "Home"
+msgstr ""
+
+#: templates/rooms/room_list.html:7
+msgid "Live Anywhere"
+msgstr "Vivir en cualquier lugar"
+
+#: templates/rooms/room_list.html:22
+msgid "Featured Rooms"
+msgstr "Habitaciones Destacadas"

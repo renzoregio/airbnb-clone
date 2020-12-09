@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Upload Photo{% endblock title %}
+{% block content %}
+
+<form method="POST" enctype="multipart/form-data">
+{% csrf_token %}
+<div class="container h-25vh w-full mx-auto flex justify-center border p-5 my-10 rounded-xl">
+    <div class="w-1/2 h-full flex flex-col items-center justify-center">
+        {% for field in form %}
+        <div class="flex justify-start w-full text-2xl text-black">{{field.label}}</div>
+        <div class="w-full border border-gray-600 p-5 rounded-md block text-left text-xl font-light mb-10">{{field}}</div>
+    {% endfor %}
+    <button class="login_box flex justify-center bg-teal-500 text-white text-3xl">Upload Photo</button>
+    </div>
+</div>
+</form>
+
+{% endblock content %}
+
+

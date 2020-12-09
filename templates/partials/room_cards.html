@@ -1,0 +1,25 @@
+{% load i18n %}
+<div class="mb-10 px-3 w-1/4">
+    <a href="{% url "rooms:detail" room.pk %}">
+    <div class="w-full h-64 bg-cover rounded-lg mb-3" style="background-image: url({{room.first_photo}})"></div>
+    <div class="flex justify-between mb-2 truncate">
+        <div class="flex w-4/5 items-center">
+            {% if room.host.superhost %}
+            <span class="mr-2 font-medium text-xs border border-black rounded-md p-1 text-black">SUPERHOST</span>
+            <span class="text-gray-600 text-sm block truncate">{{room.city}}, {{room.country.name}}</span>
+            {% else %}
+            <span class="text-gray-600 text-sm block mt-1 truncate">{{room.city}}</span>
+            {% endif %}
+        </div>
+        <div class="text-xs flex items-center">
+            {% if room.total_rating is None %}
+            <span><i class="text-red-500 text-xs fas fa-star pr-1"></i>{% trans "No Rating" %}</span>
+            {% else %}
+            <span><i class="text-red-500 text-xs fas fa-star pr-1"></i>{{room.total_rating}}</span>
+            {% endif %}
+        </div>
+    </div>
+        <span class="text-md truncate block w-11/12 text-black">{{room.name}}</span>
+</a>
+</div>
+

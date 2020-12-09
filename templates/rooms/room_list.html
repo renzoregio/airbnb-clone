@@ -1,17 +1,40 @@
 {% extends "base.html" %}
-{% block title %} Home {% endblock title %}
+{% load i18n %}
+{% block title %} {% trans "Home" %} {% endblock title %}
 {% block content %}
-    {% for room in rooms %}
-    <h4> 
+<div class="container mx-auto">
+    <div class="h-40vh bg-gray-800 mt-32 mb-24 rounded-2xl bg-cover -mx-40" style=background-image:url(https://images.unsplash.com/photo-1502228362178-086346ac6862?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjExMDk0fQ&auto=format&fit=crop&w=2500&q=80)></div>
+    <span class="font-semibold text-4xl block -mx-40">{% trans "Live Anywhere" %}</span>
+    <div class="flex justify-between mt-4 -mx-40 mb-10">
+        <div class="w-1/3 px-2">
+            <div class="h-40vh rounded-md bg-cover mb-5" style="background-image:url(https://images.unsplash.com/photo-1503917988258-f87a78e3c995?ixlib=rb-1.1.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1234&q=80)"></div>
+            <span class="flex justify-center font-semibold text-2xl">Paris</span>
+        </div>
+        <div class="w-1/3 px-2">
+            <div class="h-40vh rounded-md bg-cover mb-5" style="background-image:url(https://images.unsplash.com/photo-1534050359320-02900022671e?ixlib=rb-1.1.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1400&q=80)"></div>
+            <span class="flex justify-center font-semibold text-2xl">San Francisco</span>
+        </div>
+        <div class="w-1/3 px-2">
+            <div class="h-40vh rounded-md bg-cover mb-5" style="background-image:url(https://images.unsplash.com/photo-1541343672885-9be56236302a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1234&q=80)"></div>
+            <span class="flex justify-center font-semibold text-2xl">Budapest</span>
+        </div>
+    </div>
+    <span class="font-semibold text-4xl block -mx-40 mb-4"> {% trans "Featured Rooms" %} </span>
+    <div class="flex flex-wrap -mx-40">
+        {% for room in rooms %}
+            {% include "partials/room_cards.html" with room=room %}
+        {% endfor %}
+    </div>
+</div>
+<div class="flex w-full justify-center text-xl mt-10 font-medium">
+{% if page_obj.has_previous %}
+    <a href="?page={{page_obj.previous_page_number}}"> <i class="fas text-teal-500 fa-arrow-left fa-lg"></i> </a>
+{% endif %}
+<span class="mx-3">{{page_obj.number}} of {{page_obj.paginator.num_pages}}</span>
+{% if page_obj.has_next %}
+    <a href="?page={{page_obj.next_page_number}}"><i class="fas text-teal-500 fa-arrow-right fa-lg"></i> </a>
+{% endif %}
+</div>
 
-    <a href=" {% url "rooms:detail" room.pk %}">{{room.name}} / ${{room.price}} </a></h4>
-    {% endfor %}
-    {% if page_obj.has_previous %}
-        <a href="?page={{page_obj.previous_page_number}}"> Previous </a>
-    {% endif %}
-    Page {{page_obj.number}} of {{page_obj.paginator.num_pages}}
-    {% if page_obj.has_next %}
-        <a href="?page={{page_obj.next_page_number}}"> Next </a>
-    {% endif %}
 {% endblock content %}
 
