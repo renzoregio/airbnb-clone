@@ -8,8 +8,8 @@
             <span class="text-3xl font-medium mb-2 block">{{room.name}}</span>
         </div>
         <div class="w-1/2 flex justify-center">
-            {% on_list room as on_list_bool %}
             {% if user.is_authenticated %}
+            {% on_list room as on_list_bool %}
             {% if on_list_bool %}
             <a href="{% url "lists:toggle-room" room.pk "remove" %}" class="login_box w-2/3 bg-red-500 text-white flex justify-center font-medium">Remove from Favorites</a>
             {% else%}
